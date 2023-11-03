@@ -1,2 +1,2 @@
 # bilibili-
-一个去除bilibili开屏广告的xposed模块,安装上该apk并设置lsposed开启该模块即可去除b站的开屏广告。
+安装上该apk并设置lsposed开启该模块即可去除b站的开屏广告。
