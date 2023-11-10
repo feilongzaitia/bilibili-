@@ -17,6 +17,8 @@ public class QuGuang implements IXposedHookLoadPackage {
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         if (loadPackageParam.packageName.equals("tv.danmaku.bili")){
             Class SplashClazz = XposedHelpers.findClassIfExists("tv.danmaku.bili.ui.splash.ad.model.Splash",loadPackageParam.classLoader);
+
+            Class SourceContentClazz = XposedHelpers.findClassIfExists("com.bilibili.adcommon.basic.model.SourceContent", loadPackageParam.classLoader);
             XposedHelpers.findAndHookMethod("tv.danmaku.bili.ui.splash.ad.page.x", loadPackageParam.classLoader, "a", SplashClazz, new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
@@ -36,6 +38,14 @@ public class QuGuang implements IXposedHookLoadPackage {
                             super.afterHookedMethod(param);
                         }
                     });
+            XposedHelpers.findAndHookMethod("com.bilibili.ad.adview.videodetail.b", loadPackageParam.classLoader, "a", SourceContentClazz, new XC_MethodHook() { 
+                protected void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) throws Throwable {
+                    Log.d(TAG, "layout:" + methodHookParam.getResult().toString());
+                    methodHookParam.setResult(105);
+                    super.afterHookedMethod(methodHookParam);
+                }
+            });
+
 
 
         }
