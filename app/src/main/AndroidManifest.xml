@@ -26,7 +26,7 @@
             android:value="true" />
         <meta-data
             android:name="xposeddescription"
-            android:value="去除了bilibili的开屏广告" />
+            android:value="去除了bilibili的部分广告" />
         <meta-data
             android:name="xposedminversion"
             android:value="82" />
